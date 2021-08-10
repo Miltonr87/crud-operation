@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
-import axios from 'axios';
+import Axios from 'axios';
 
 export default function Create() {
   const [firstName, setFirstName] = useState('');
@@ -10,7 +10,7 @@ export default function Create() {
   console.log(lastName);
 
   const sendDataToAPI = () => {
-    axios.post(`https://61127ec389c6d00017ac039e.mockapi.io/Crud`, {
+    Axios.post(`https://61127ec389c6d00017ac039e.mockapi.io/Crud`, {
       firstName,
       lastName,
     })
