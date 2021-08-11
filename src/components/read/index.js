@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Icon, Label, Menu, Table, Button } from 'semantic-ui-react';
+import { Label, Table, Button } from 'semantic-ui-react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,11 @@ export default function Read() {
                 console.log(getData.data);
             })
     }, [])
+
+    const setID = (id) => {
+        console.log(id);
+        localStorage.setItem('ID', id);
+    };
 
     return (
         <div>
@@ -39,7 +44,10 @@ export default function Read() {
                                     <Table.Cell>{data.lastName}</Table.Cell>
                                     <Table.Cell>
                                         <Link to='/update'>
-                                            <Button color="green">Update</Button>
+                                            <Button 
+                                            color="green"
+                                            onClick={() => setID(data.id)}
+                                            >Update</Button>
                                         </Link>
                                     </Table.Cell>
                                     <Table.Cell>
