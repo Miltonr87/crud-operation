@@ -5,12 +5,13 @@ import Axios from 'axios';
 export default function Update() {
     const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [ID, setID] = useState(null);
 
   console.log(firstName)
   console.log(lastName);
 
   const sendDataToAPI = () => {
-    Axios.post(`https://61127ec389c6d00017ac039e.mockapi.io/Crud`, {
+    Axios.put(`https://61127ec389c6d00017ac039e.mockapi.io/Crud/${ID}`, {
       firstName,
       lastName,
     })
@@ -19,6 +20,7 @@ export default function Update() {
   useEffect(()=> {
     setFirstName(localStorage.getItem('firstName'));
     setLastName(localStorage.getItem('lastName'));
+    setID(localStorage.getItem('ID'))
   }, [])
     return (
         <Form>
@@ -38,7 +40,7 @@ export default function Update() {
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder='Last Name' />
             </Form.Field>
-            <Button type='submit' onClick={sendDataToAPI} >Submit</Button>
+            <Button type='submit' onClick={sendDataToAPI} >Update</Button>
         </Form>
     )
 }
