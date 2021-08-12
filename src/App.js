@@ -14,7 +14,6 @@ function App() {
         </div>
         <div>
           <Route exact path = '/' component={Create} />
-            <Create />
         </div>
         <div style={{ marginTop: 20 }}>
           <Route exact path = '/read' component={Read} />

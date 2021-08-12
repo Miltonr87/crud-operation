@@ -19,6 +19,22 @@ export default function Read() {
         localStorage.setItem('ID', id);
     };
 
+    const getData = () => {
+        Axios.get(`https://61127ec389c6d00017ac039e.mockapi.io/Crud`)
+            .then((getData) => {
+                setApiData(getData.data)
+                console.log(getData.data);
+            })
+    }
+
+    const onDelete = (id) => {
+        Axios.delete(`https://61127ec389c6d00017ac039e.mockapi.io/Crud/${id}`)
+            .then((getData) => {
+                getData();
+                console.log(getData.data);
+            })
+    }
+
     return (
         <div>
             <Table celled>
@@ -44,16 +60,17 @@ export default function Read() {
                                     <Table.Cell>{data.lastName}</Table.Cell>
                                     <Table.Cell>
                                         <Link to='/update'>
-                                            <Button 
-                                            color="green"
-                                            onClick={() => setID(data.id)}
+                                            <Button
+                                                color="green"
+                                                onClick={() => setID(data.id)}
                                             >Update</Button>
                                         </Link>
                                     </Table.Cell>
                                     <Table.Cell>
-                                        <Link to='/delete'>
-                                            <Button color="red">Delete</Button>
-                                        </Link>
+                                            <Button 
+                                            color="red" 
+                                            onCLick={() => onDelete(data.id)}
+                                            >Delete</Button>   
                                     </Table.Cell>
                                 </Table.Row>
                             </>
